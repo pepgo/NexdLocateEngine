@@ -22,6 +22,7 @@ core engine to scan wifi result and push request to server
 								if (object instanceof Integer) {
 									switch ((Integer)object) {
 									case NexdEngine.LOCATING_FINISHED:
+										//Whats LocateActivity????
 										LocateActivity.this.locateButton.setEnabled(true);
 										break;
 									case NexdEngine.LOCATING_ERROR:
@@ -33,9 +34,11 @@ core engine to scan wifi result and push request to server
 									case NexdEngine.LOCATING_EXCEPTION:
 										new ToastUtil(getApplicationContext()).showToast("Result exception");
 										break;
+									//NETWORK_TIMEOUT has no definition
 									case NexdEngine.NETWORK_TIMEOUT:
 										new ToastUtil(getApplicationContext()).showToast("Timeout");
 										break;
+									//SOCKET_EXCEPTION has no definition
 									case NexdEngine.SOCKET_EXCEPTION:
 										new ToastUtil(getApplicationContext()).showToast("Socket error");
 										break;

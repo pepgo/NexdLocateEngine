@@ -1,0 +1,21 @@
+<colorscheme name="Dangdai">
+	<renderer type="1" shape="0">
+		<fill enabled="1" normal="239;197;227;255" selected="0;185;232;255"/>
+		<stroke enabled="1" color="152;137;134;255" width="2" type="0"/>
+		<text enabled="1" font="Courier" color="255;255;255;255" size="25" enableBackground="0" bgcolor="255;255;255;255"/>
+	</renderer>
+	<renderer type="2" shape="0">
+		<fill enabled="1" normal="213;232;179;255" selected="0;199;200;255"/>
+		<stroke enabled="1" color="152;137;134;255" width="2" type="0"/>
+		<text enabled="1" font="Courier" color="255;255;255;255" size="25" enableBackground="0" bgcolor="255;255;255;255"/>
+	</renderer>
+	<renderer type="0" shape="0">
+		<fill enabled="1" normal="252;252;229;255" selected="0;252;229;255"/>
+		<stroke enabled="1" color="36;0;0;255" width="2" type="0"/>
+		<text enabled="0" font="Courier" color="255;255;255;255" size="25" enableBackground="0" bgcolor="255;255;255;255"/>
+	</renderer>
+	<renderer type="4" shape="1">
+		<stroke enabled="1" color="255;255;255;255" width="2" type="0"/>
+		<text enabled="0" font="Courier" color="255;255;255;255" size="25" enableBackground="0" bgcolor="255;255;255;255"/>
+	</renderer>
+</colorscheme>

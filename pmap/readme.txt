@@ -1,0 +1,1 @@
+主要部分在map.initialpaint()中，里面有些addpoint setwidth之类的都是设置绘制参数的 在外部map.cpp中调用了这句话 你看能不能将封装好的java类传递到map类中
