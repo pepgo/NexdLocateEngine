@@ -10,10 +10,6 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-<<<<<<< HEAD
-=======
-import android.os.Message;
->>>>>>> shiotoli
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -30,10 +26,6 @@ import com.nexdgis.feature.MapFeatureTable;
 import com.nexdgis.layer.TopLayer;
 import com.nexdgis.layer.opengl.NexdGLRenderer;
 import com.nexdgis.layer.widget.OnFeatureSelectedListener;
-<<<<<<< HEAD
-=======
-import com.nexdgis.log.NexdLog;
->>>>>>> shiotoli
 import com.nexdgis.remote.*;
 
 public class BuildingActivity extends Activity {
@@ -44,11 +36,7 @@ public class BuildingActivity extends Activity {
 	String currentFloor;
 	NexdDatabase test;
 	String floorFilePath;
-<<<<<<< HEAD
 	
-=======
-	Button locatorButton;
->>>>>>> shiotoli
 	protected void onCreate(Bundle savedInstanceStateBundle) {
 		super.onCreate(savedInstanceStateBundle);
 		setContentView(R.layout.building_activity);
@@ -68,11 +56,7 @@ public class BuildingActivity extends Activity {
 		
 		currentFloor = floorList.get(0);
 		floorFilePath = Environment.getExternalStorageDirectory().getPath() + "/map_xml/" + buildingIntentName + "/" + currentFloor;
-<<<<<<< HEAD
 		
-=======
-		locatorButton = (Button) findViewById(R.id.button1);
->>>>>>> shiotoli
 		initViews();
 		
 	}
@@ -91,24 +75,7 @@ public class BuildingActivity extends Activity {
 	void initViews() {
 		MapFeatureTable.releaseTable();
 		NexdGLRenderer.initialized = false;
-<<<<<<< HEAD
 		final NexdMap nexdMap = (NexdMap)findViewById(R.id.nexd_map);
-=======
-
-		final NexdMap nexdMap = (NexdMap)findViewById(R.id.nexd_map);
-		final Handler updateHandler = new Handler(){
-			@Override
-			public void handleMessage(Message msg)
-			{
-				super.handleMessage(msg);
-				if (msg.what == 1)
-				{
-					nexdMap.updateLocator();
-				}
-					
-			}
-		};
->>>>>>> shiotoli
 		test.syncRenderer(this, "render.xml");
 		
 //		test.syncFeature(this, "FengLianGuangChang.FloorF2.xml");
@@ -175,7 +142,6 @@ public class BuildingActivity extends Activity {
 			}
 		});
 		nexdEngine = NexdEngine.getEngine();
-<<<<<<< HEAD
 		nexdEngine.setEngine(this, buildingIntentName, currentFloor, new NexdCallBackListener() {
 		    public void call(Object object) {
 		                            if (object instanceof android.graphics.Point) {
@@ -214,59 +180,6 @@ public class BuildingActivity extends Activity {
 		                                return;
 		                            }
 		                        }
-=======
-		locatorButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				nexdEngine.setEngine(BuildingActivity.this, buildingIntentName, currentFloor, new NexdCallBackListener() {
-				    public void call(Object object) {
-				                            if (object instanceof android.graphics.Point) {
-				                                int x = ((android.graphics.Point)object).x;
-				                                int y = ((android.graphics.Point)object).y;
-//				                                setLocatorTo(x, y);
-				                                NexdLog.tagInfo("log", x+" "+y);
-				                                nexdMap.setLocator(x, y);
-				                                Message msg = new Message();
-				                                msg.what = 1;
-				                                updateHandler.sendMessage(msg);
-//				                                nexdMap.updateLocator();
-				                            return;
-				                            }
-				                            if (object instanceof String) {
-				                            new ToastUtil(getApplicationContext()).showToast("Detected floor:" + (String)object);
-				                            }
-				                            if (object instanceof Integer) {
-				                                switch ((Integer)object) {
-				                                case NexdEngine.LOCATING_FINISHED:
-				                                    BuildingActivity.this.locatorButton.setEnabled(true);
-				                                    break;
-				                                case NexdEngine.LOCATING_ERROR:
-				                                    new ToastUtil(getApplicationContext()).showToast("Generating info data");
-				                                    break;
-				                                case NexdEngine.LOCATING_FAILED:
-				                                    new ToastUtil(getApplicationContext()).showToast("Locating failed");
-				                                    break;
-				                                case NexdEngine.LOCATING_EXCEPTION:
-				                                    new ToastUtil(getApplicationContext()).showToast("Result exception");
-				                                    break;
-				                                case NexdEngine.NETWORK_TIMEOUT:
-				                                    new ToastUtil(getApplicationContext()).showToast("Timeout");
-				                                    break;
-				                                case NexdEngine.SOCKET_EXCEPTION:
-				                                    new ToastUtil(getApplicationContext()).showToast("Socket error");
-				                                    break;
-				                                default:
-				                                    break;
-				                                }
-				                                return;
-				                            }
-				                        }
-				});
-				locatorButton.setEnabled(false);
-				nexdEngine.startSerialLocate(8,2);
-			}
->>>>>>> shiotoli
 		});
 	}
 

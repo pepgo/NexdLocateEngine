@@ -25,14 +25,4 @@
 
     </ListView>
 
-<<<<<<< HEAD
-=======
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
- 		android:minHeight="92dp"
- 		android:textSize="22sp"
-        android:text="定位" />
->>>>>>> shiotoli
 </RelativeLayout>
