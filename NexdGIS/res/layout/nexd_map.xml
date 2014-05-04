@@ -9,6 +9,9 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".TestActivity" >
 
+<<<<<<< HEAD
     
+=======
+>>>>>>> shiotoli
 
 </com.nexdgis.NexdMap>

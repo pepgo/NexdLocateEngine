@@ -20,6 +20,10 @@ import com.nexdgis.layer.Layer;
 import com.nexdgis.layer.MapFeatureLayer;
 import com.nexdgis.layer.TopLayer;
 import com.nexdgis.layer.widget.OnFeatureSelectedListener;
+<<<<<<< HEAD
+=======
+import com.nexdgis.log.NexdLog;
+>>>>>>> shiotoli
 
 public class NexdMap extends FrameLayout {
 
@@ -135,13 +139,22 @@ public class NexdMap extends FrameLayout {
 		if (mMapFeatureLayer != null) {
 			mMapFeatureLayer.setLocator(x,y);
 		}
+<<<<<<< HEAD
 		
 	}
 	private void updateLocator() {
+=======
+	}
+	public void updateLocator() {
+>>>>>>> shiotoli
 		if (mMapFeatureLayer != null) {
 			Point p = mMapFeatureLayer.getLocatorScreenPoint();
 			if (mTopLayer != null) {
 				if (p != null) {
+<<<<<<< HEAD
+=======
+					NexdLog.tagInfo("MYJNI",p.x+" "+p.y);
+>>>>>>> shiotoli
 					mTopLayer.showLocator(p);
 				} else {
 					mTopLayer.hideLocator();

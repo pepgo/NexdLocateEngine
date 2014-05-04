@@ -20,6 +20,12 @@ import org.json.JSONObject;
 
 
 
+<<<<<<< HEAD:NexdGIS/src/com/nexdgis/remote/NexdEngine.java
+=======
+
+import com.nexdgis.log.NexdLog;
+
+>>>>>>> shiotoli:NexdGIS/src/com/nexdgis/remote/NexdEngine.java
 import android.content.Context;
 import android.graphics.Point;
 import android.net.wifi.ScanResult;
@@ -29,7 +35,11 @@ import android.net.wifi.ScanResult;
 
 
 public class NexdEngine {
+<<<<<<< HEAD:NexdGIS/src/com/nexdgis/remote/NexdEngine.java
 	protected static final String BASE_URL = "http://115.28.46.208:23333";
+=======
+	protected static final String BASE_URL = "http://noisedonkey.vicp.net:8091";
+>>>>>>> shiotoli:NexdGIS/src/com/nexdgis/remote/NexdEngine.java
 //	protected static final String BASE_URL = "http://192.168.166.2:8889";
 	WifiScanner wifiScanner;
 	Context context;
@@ -49,11 +59,20 @@ public class NexdEngine {
 	String userID;
 	StringBuilder wifiContent;
 	NexdCallBackListener listener;
+<<<<<<< HEAD:NexdGIS/src/com/nexdgis/remote/NexdEngine.java
+=======
+	public int status = 0;
+>>>>>>> shiotoli:NexdGIS/src/com/nexdgis/remote/NexdEngine.java
 
 	public static final int LOCATING_FINISHED = 0;
 	public static final int LOCATING_ERROR = -1;
 	public static final int LOCATING_FAILED = -2;
 	public static final int LOCATING_EXCEPTION = -3;
+<<<<<<< HEAD:NexdGIS/src/com/nexdgis/remote/NexdEngine.java
+=======
+	public static final int NETWORK_TIMEOUT = -4;
+	public static final int SOCKET_EXCEPTION = -5;
+>>>>>>> shiotoli:NexdGIS/src/com/nexdgis/remote/NexdEngine.java
 	
 	private ExecutorService pool = Executors.newSingleThreadExecutor();
 	private ExecutorService requestPool = Executors.newSingleThreadExecutor();
@@ -142,6 +161,10 @@ public class NexdEngine {
 			public void run() {
 				// TODO Auto-generated method stub
 				String urlServerString = BASE_URL + "/IKAServer/locating?user=" + userID + "&floor=" + floorName + "&building=" + buildingName;
+<<<<<<< HEAD:NexdGIS/src/com/nexdgis/remote/NexdEngine.java
+=======
+				NexdLog.tagInfo("MYJNI", urlServerString);  
+>>>>>>> shiotoli:NexdGIS/src/com/nexdgis/remote/NexdEngine.java
 				httpClient.getParams().setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
 				final HttpPost httpPost = new HttpPost(urlServerString);
 				try {
@@ -278,7 +301,11 @@ public class NexdEngine {
 									int status = object.getInt("status");
 									System.out.println("Get a response with json object:" + object);
 									if (status == 0x10) {
+<<<<<<< HEAD:NexdGIS/src/com/nexdgis/remote/NexdEngine.java
 										locationPoint.set(object.getInt("x") * 6, object.getInt("y") * 6);
+=======
+										locationPoint.set(object.getInt("x"), object.getInt("y"));
+>>>>>>> shiotoli:NexdGIS/src/com/nexdgis/remote/NexdEngine.java
 										listener.call(locationPoint);
 									} else if (status == 0x01) {
 										listener.call(LOCATING_ERROR);
