@@ -10,10 +10,7 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-<<<<<<< HEAD
-=======
 import android.os.Message;
->>>>>>> shiotoli
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -30,10 +27,7 @@ import com.nexdgis.feature.MapFeatureTable;
 import com.nexdgis.layer.TopLayer;
 import com.nexdgis.layer.opengl.NexdGLRenderer;
 import com.nexdgis.layer.widget.OnFeatureSelectedListener;
-<<<<<<< HEAD
-=======
 import com.nexdgis.log.NexdLog;
->>>>>>> shiotoli
 import com.nexdgis.remote.*;
 
 public class BuildingActivity extends Activity {
@@ -44,11 +38,9 @@ public class BuildingActivity extends Activity {
 	String currentFloor;
 	NexdDatabase test;
 	String floorFilePath;
-<<<<<<< HEAD
-	
-=======
 	Button locatorButton;
->>>>>>> shiotoli
+	NexdEngine nexdEngine;
+
 	protected void onCreate(Bundle savedInstanceStateBundle) {
 		super.onCreate(savedInstanceStateBundle);
 		setContentView(R.layout.building_activity);
@@ -68,16 +60,13 @@ public class BuildingActivity extends Activity {
 		
 		currentFloor = floorList.get(0);
 		floorFilePath = Environment.getExternalStorageDirectory().getPath() + "/map_xml/" + buildingIntentName + "/" + currentFloor;
-<<<<<<< HEAD
-		
-=======
 		locatorButton = (Button) findViewById(R.id.button1);
->>>>>>> shiotoli
 		initViews();
 		
 	}
 	
 	Handler handler = new Handler();
+	
 	Runnable runnable = new Runnable() {
 		public void run() {
 			System.out.println("change floor to:" + currentFloor);
@@ -87,14 +76,10 @@ public class BuildingActivity extends Activity {
 			initViews();
 		}
 	};
-	NexdEngine nexdEngine;
+	
 	void initViews() {
 		MapFeatureTable.releaseTable();
 		NexdGLRenderer.initialized = false;
-<<<<<<< HEAD
-		final NexdMap nexdMap = (NexdMap)findViewById(R.id.nexd_map);
-=======
-
 		final NexdMap nexdMap = (NexdMap)findViewById(R.id.nexd_map);
 		final Handler updateHandler = new Handler(){
 			@Override
@@ -108,7 +93,6 @@ public class BuildingActivity extends Activity {
 					
 			}
 		};
->>>>>>> shiotoli
 		test.syncRenderer(this, "render.xml");
 		
 //		test.syncFeature(this, "FengLianGuangChang.FloorF2.xml");
@@ -175,7 +159,6 @@ public class BuildingActivity extends Activity {
 			}
 		});
 		nexdEngine = NexdEngine.getEngine();
-<<<<<<< HEAD
 		nexdEngine.setEngine(this, buildingIntentName, currentFloor, new NexdCallBackListener() {
 		    public void call(Object object) {
 		                            if (object instanceof android.graphics.Point) {
@@ -214,7 +197,6 @@ public class BuildingActivity extends Activity {
 		                                return;
 		                            }
 		                        }
-=======
 		locatorButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -266,8 +248,6 @@ public class BuildingActivity extends Activity {
 				locatorButton.setEnabled(false);
 				nexdEngine.startSerialLocate(8,2);
 			}
->>>>>>> shiotoli
 		});
 	}
-
 }
