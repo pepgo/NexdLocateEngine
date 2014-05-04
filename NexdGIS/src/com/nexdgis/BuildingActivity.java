@@ -41,7 +41,7 @@ public class BuildingActivity extends Activity {
 	Button locatorButton;
 	NexdEngine nexdEngine;
 
-	protected void onCreate(Bundle savedInstanceStateBundle) {
+	public void onCreate(Bundle savedInstanceStateBundle) {
 		super.onCreate(savedInstanceStateBundle);
 		setContentView(R.layout.building_activity);
 		
@@ -174,7 +174,7 @@ public class BuildingActivity extends Activity {
 		                            if (object instanceof Integer) {
 		                                switch ((Integer)object) {
 		                                case NexdEngine.LOCATING_FINISHED:
-		                                    LocateActivity.this.locateButton.setEnabled(true);
+		                                    BuildingActivity.this.locatorButton.setEnabled(true);
 		                                    break;
 		                                case NexdEngine.LOCATING_ERROR:
 		                                    new ToastUtil(getApplicationContext()).showToast("Generating info data");
@@ -197,6 +197,7 @@ public class BuildingActivity extends Activity {
 		                                return;
 		                            }
 		                        }
+		});
 		locatorButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
