@@ -17,12 +17,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.CoreProtocolPNames;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
-
-
-
-
 import com.nexdgis.log.NexdLog;
-
 import android.content.Context;
 import android.graphics.Point;
 import android.net.wifi.ScanResult;

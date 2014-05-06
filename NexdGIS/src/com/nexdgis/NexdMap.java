@@ -137,6 +137,7 @@ public class NexdMap extends FrameLayout {
 			mMapFeatureLayer.setLocator(x,y);
 		}
 	}
+
 	public void updateLocator() {
 		if (mMapFeatureLayer != null) {
 			Point p = mMapFeatureLayer.getLocatorScreenPoint();
@@ -200,6 +201,10 @@ public class NexdMap extends FrameLayout {
 
 	public void setOnFeatureSelectedListener(OnFeatureSelectedListener listener) {
 		mFeatureSelectedListener = listener;
+		if (listener!=null)
+		{
+			mMapFeatureLayer.enableListeningSelected();
+		}
 	}
 
 	public void removeOnFeatureSelectedListener() {

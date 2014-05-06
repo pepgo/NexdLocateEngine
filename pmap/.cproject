@@ -30,7 +30,6 @@
 								<option id="com.android.gcc.option.includePath.309616169" superClass="com.android.gcc.option.includePath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;D:\android-ndk-r9d\platforms\android-19\arch-arm\usr\include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;D:\android-ndk-r9d\sources\cxx-stl\stlport\stlport&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;D:\YanXiao\Nexd\Workspace_Code\NexdLocateEngine\pmap\jni&quot;"/>
 								</option>
 								<inputType id="com.android.gcc.inputType.1227100216" superClass="com.android.gcc.inputType"/>
 							</tool>

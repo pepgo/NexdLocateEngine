@@ -114,6 +114,7 @@ public:
 		linePositions = 0;
 	}
 	void Draw();
+	void DrawWithoutSelected();
 	void preDraw(unsigned int vob[]);
 	void getIndices();
 	void getBoundingBox();
@@ -162,9 +163,10 @@ private:
 	short* lineIndexes;
 	int selectedId;
 	float* textureIndexes;
+	bool selectedEnable;
 public:
 	void rescaleText(float scale);
-	Map():start(false),selectedId(0),positions(0),indexes(0),lineIndexes(0),textureIndexes(0){}
+	Map():start(false),selectedId(0),positions(0),indexes(0),lineIndexes(0),textureIndexes(0),selectedEnable(false){}
 	int vlen,ilen,llen;
 	int tvlen,tilen,ttlen;
 	vector<Polygon> polyList;
@@ -174,6 +176,7 @@ public:
 	void initialPaint();
 	void render();
 	void cleanup();
+	void setSelectedEnable() {selectedEnable = true;}
 	void renderwithoutText();
 };
 class RadiusPoint
