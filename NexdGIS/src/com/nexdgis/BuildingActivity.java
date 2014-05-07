@@ -28,6 +28,7 @@ import com.nexdgis.layer.TopLayer;
 import com.nexdgis.layer.opengl.NexdGLRenderer;
 import com.nexdgis.layer.widget.OnFeatureSelectedListener;
 import com.nexdgis.log.NexdLog;
+import com.nexdgis.remote.NexdCallBackListener;
 import com.nexdgis.remote.*;
 
 public class BuildingActivity extends Activity {

@@ -29,7 +29,7 @@ public class NexdMap extends FrameLayout {
 	private final ArrayList<GraphicLayer> mGraphicLayerList = new ArrayList<GraphicLayer>();
 	private OnFeatureSelectedListener mFeatureSelectedListener;
 	private final NexdMapHandler mHandler = new NexdMapHandler(this);
-
+	private boolean listened = false;
 
 	static {
 		System.loadLibrary("Map");
@@ -201,6 +201,7 @@ public class NexdMap extends FrameLayout {
 
 	public void setOnFeatureSelectedListener(OnFeatureSelectedListener listener) {
 		mFeatureSelectedListener = listener;
+		listened = true;
 	}
 
 	public void removeOnFeatureSelectedListener() {
