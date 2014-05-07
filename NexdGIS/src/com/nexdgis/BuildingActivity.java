@@ -3,6 +3,7 @@ package com.nexdgis;
 import java.io.File;
 import java.util.ArrayList;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -77,6 +78,7 @@ public class BuildingActivity extends Activity {
 		}
 	};
 
+	@SuppressLint("HandlerLeak")
 	void initViews() {
 		MapFeatureTable.releaseTable();
 		NexdGLRenderer.initialized = false;
@@ -159,45 +161,6 @@ public class BuildingActivity extends Activity {
 			}
 		});
 		nexdEngine = NexdEngine.getEngine();
-		nexdEngine.setEngine(this, buildingIntentName, currentFloor, new NexdCallBackListener() {
-			public void call(Object object) {
-				if (object instanceof android.graphics.Point) {
-					int x = ((android.graphics.Point)object).x;
-					int y = ((android.graphics.Point)object).y;
-					//		                                setLocatorTo(x, y);
-					nexdMap.setLocator(x, y);
-					return;
-				}
-				if (object instanceof String) {
-					new ToastUtil(getApplicationContext()).showToast("Detected floor:" + (String)object);
-				}
-				if (object instanceof Integer) {
-					switch ((Integer)object) {
-					case NexdEngine.LOCATING_FINISHED:
-						BuildingActivity.this.locatorButton.setEnabled(true);
-						break;
-					case NexdEngine.LOCATING_ERROR:
-						new ToastUtil(getApplicationContext()).showToast("Generating info data");
-						break;
-					case NexdEngine.LOCATING_FAILED:
-						new ToastUtil(getApplicationContext()).showToast("Locating failed");
-						break;
-					case NexdEngine.LOCATING_EXCEPTION:
-						new ToastUtil(getApplicationContext()).showToast("Result exception");
-						break;
-					case NexdEngine.NETWORK_TIMEOUT:
-						new ToastUtil(getApplicationContext()).showToast("Timeout");
-						break;
-					case NexdEngine.SOCKET_EXCEPTION:
-						new ToastUtil(getApplicationContext()).showToast("Socket error");
-						break;
-					default:
-						break;
-					}
-					return;
-				}
-			}
-		});
 		locatorButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
