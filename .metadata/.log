@@ -315,7 +315,11 @@ Contains: /Users/Pepgo/Documents/Next_Git/NexdLocateEngine/NexdGIS overlaps the 
 !MESSAGE OK
 !SUBENTRY 2 org.eclipse.core.resources 4 77 2014-05-01 01:29:58.618
 !MESSAGE /Users/Pepgo/Documents/Next_Git/NexdLocateEngine/NexdGIS overlaps the location of another project: 'NexdGIS'
+<<<<<<< HEAD
 !SESSION 2014-05-06 15:41:00.591 -----------------------------------------------
+=======
+!SESSION 2014-05-05 12:28:30.795 -----------------------------------------------
+>>>>>>> master
 eclipse.buildId=v22.3.0-887826
 java.version=1.6.0_65
 java.vendor=Apple Inc.
@@ -323,6 +327,7 @@ BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=zh_CN
 Framework arguments:  -product com.android.ide.eclipse.adt.package.product -product com.android.ide.eclipse.adt.package.product -product com.android.ide.eclipse.adt.package.product -keyring /Users/Pepgo/.eclipse_keyring -showlocation
 Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product com.android.ide.eclipse.adt.package.product -product com.android.ide.eclipse.adt.package.product -data /Users/Pepgo/Documents/Next_Git/NexdLocateEngine -product com.android.ide.eclipse.adt.package.product -keyring /Users/Pepgo/.eclipse_keyring -showlocation
 
+<<<<<<< HEAD
 !ENTRY org.eclipse.core.net 1 0 2014-05-06 15:41:04.787
 !MESSAGE System property http.proxyHost has been set to 127.0.0.1 by an external source. This value will be overwritten using the values from the preferences
 
@@ -379,17 +384,77 @@ org.eclipse.core.runtime.CoreException: The file does not exist for the external
 
 !ENTRY com.android.ide.eclipse.adt 4 0 2014-05-06 15:41:19.357
 !MESSAGE Unable to read /Users/Pepgo/Documents/Next_Git/NexdLocateEngine/pmap/AndroidManifest.xml: org.eclipse.core.internal.resources.ResourceException: Resource is out of sync with the file system: '/pmap/AndroidManifest.xml'.
+=======
+!ENTRY org.eclipse.core.net 1 0 2014-05-05 12:28:34.985
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-05-05 12:28:38.580
+!MESSAGE projectOpenedWithWorkspace: failed to find manifest package for project pmap
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-05-05 12:28:40.083
+!MESSAGE fileChanged: failed to find manifest package for project pmap
+
+!ENTRY org.eclipse.core.jobs 4 2 2014-05-05 12:28:50.289
+!MESSAGE An internal error occurred during: "Re-indexing repository NexdLocateEngine".
+!STACK 0
+java.lang.IllegalStateException: Workspace is closed.
+	at org.eclipse.core.resources.ResourcesPlugin.getWorkspace(ResourcesPlugin.java:399)
+	at org.eclipse.egit.core.IteratorService.createInitialIterator(IteratorService.java:38)
+	at org.eclipse.egit.core.internal.indexdiff.IndexDiffCacheEntry.calcIndexDiff(IndexDiffCacheEntry.java:439)
+	at org.eclipse.egit.core.internal.indexdiff.IndexDiffCacheEntry.access$5(IndexDiffCacheEntry.java:432)
+	at org.eclipse.egit.core.internal.indexdiff.IndexDiffCacheEntry$4.run(IndexDiffCacheEntry.java:260)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-05-05 12:28:50.302
+!MESSAGE Parsing Data for android-19 failed
+!STACK 0
+org.eclipse.swt.SWTException: Invalid thread access
+	at org.eclipse.swt.SWT.error(SWT.java:4361)
+	at org.eclipse.swt.SWT.error(SWT.java:4276)
+	at org.eclipse.swt.SWT.error(SWT.java:4247)
+	at org.eclipse.swt.widgets.Display.error(Display.java:1070)
+	at org.eclipse.swt.widgets.Display.createDisplay(Display.java:827)
+	at org.eclipse.swt.widgets.Display.create(Display.java:810)
+	at org.eclipse.swt.graphics.Device.<init>(Device.java:130)
+	at org.eclipse.swt.widgets.Display.<init>(Display.java:701)
+	at org.eclipse.swt.widgets.Display.<init>(Display.java:692)
+	at org.eclipse.swt.widgets.Display.getDefault(Display.java:1388)
+	at com.android.ide.eclipse.adt.AdtPlugin.getDisplay(AdtPlugin.java:354)
+	at com.android.ide.eclipse.adt.AdtPlugin.updateTargetListeners(AdtPlugin.java:1750)
+	at com.android.ide.eclipse.adt.internal.sdk.Sdk$6.run(Sdk.java:699)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+!SESSION 2014-05-05 12:28:52.163 -----------------------------------------------
+eclipse.buildId=v22.3.0-887826
+java.version=1.7.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=zh_CN
+Framework arguments:  -product com.android.ide.eclipse.adt.package.product -keyring /Users/Pepgo/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product com.android.ide.eclipse.adt.package.product -keyring /Users/Pepgo/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2014-05-05 12:28:57.934
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-05-05 12:29:00.512
+!MESSAGE projectOpenedWithWorkspace: failed to find manifest package for project pmap
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-05-05 12:29:11.265
+!MESSAGE File is Out of sync
+>>>>>>> master
 !STACK 0
 com.android.io.StreamException: org.eclipse.core.internal.resources.ResourceException: Resource is out of sync with the file system: '/pmap/AndroidManifest.xml'.
 	at com.android.ide.eclipse.adt.io.IFileWrapper.getContents(IFileWrapper.java:55)
 	at com.android.ide.common.xml.AndroidManifestParser.parse(AndroidManifestParser.java:609)
 	at com.android.ide.eclipse.adt.internal.project.AndroidManifestHelper.parseUnchecked(AndroidManifestHelper.java:75)
+<<<<<<< HEAD
 	at com.android.ide.eclipse.adt.internal.project.AndroidManifestHelper.parse(AndroidManifestHelper.java:102)
 	at com.android.ide.eclipse.adt.internal.build.builders.PreCompilerDeltaVisitor.visit(PreCompilerDeltaVisitor.java:218)
 	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:69)
 	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:80)
 	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:49)
 	at com.android.ide.eclipse.adt.internal.build.builders.PreCompilerBuilder.build(PreCompilerBuilder.java:336)
+=======
+	at com.android.ide.eclipse.adt.internal.build.builders.PreCompilerBuilder.build(PreCompilerBuilder.java:454)
+>>>>>>> master
 	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
 	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
 	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
@@ -407,6 +472,7 @@ Caused by: org.eclipse.core.internal.resources.ResourceException: Resource is ou
 	at org.eclipse.core.internal.resources.File.getContents(File.java:289)
 	at org.eclipse.core.internal.resources.File.getContents(File.java:278)
 	at com.android.ide.eclipse.adt.io.IFileWrapper.getContents(IFileWrapper.java:49)
+<<<<<<< HEAD
 	... 20 more
 
 !ENTRY org.eclipse.core.resources 4 75 2014-05-06 15:41:20.063
@@ -440,3 +506,24 @@ org.eclipse.core.runtime.CoreException: The file does not exist for the external
 !MESSAGE The file does not exist for the external tool named New_Builder.
 !SUBENTRY 1 org.eclipse.core.externaltools 4 0 2014-05-06 15:41:20.066
 !MESSAGE The file does not exist for the external tool named New_Builder.
+=======
+	... 15 more
+
+!ENTRY org.eclipse.core.jobs 4 2 2014-05-05 12:29:11.871
+!MESSAGE An internal error occurred during: "LabelEventJob".
+!STACK 0
+org.eclipse.swt.SWTException: Invalid thread access
+	at org.eclipse.swt.SWT.error(SWT.java:4361)
+	at org.eclipse.swt.SWT.error(SWT.java:4276)
+	at org.eclipse.swt.SWT.error(SWT.java:4247)
+	at org.eclipse.swt.widgets.Display.error(Display.java:1070)
+	at org.eclipse.swt.widgets.Display.createDisplay(Display.java:827)
+	at org.eclipse.swt.widgets.Display.create(Display.java:810)
+	at org.eclipse.swt.graphics.Device.<init>(Device.java:130)
+	at org.eclipse.swt.widgets.Display.<init>(Display.java:701)
+	at org.eclipse.swt.widgets.Display.<init>(Display.java:692)
+	at org.eclipse.swt.widgets.Display.getDefault(Display.java:1388)
+	at org.eclipse.egit.ui.internal.decorators.GitLightweightDecorator.fireLabelEvent(GitLightweightDecorator.java:662)
+	at org.eclipse.egit.ui.internal.decorators.LabelEventJob.run(GitLightweightDecorator.java:731)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+>>>>>>> master
