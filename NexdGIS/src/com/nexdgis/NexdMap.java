@@ -201,7 +201,14 @@ public class NexdMap extends FrameLayout {
 
 	public void setOnFeatureSelectedListener(OnFeatureSelectedListener listener) {
 		mFeatureSelectedListener = listener;
+<<<<<<< HEAD
 		listened = true;
+=======
+		if (listener!=null)
+		{
+			mMapFeatureLayer.enableListeningSelected();
+		}
+>>>>>>> FETCH_HEAD
 	}
 
 	public void removeOnFeatureSelectedListener() {
