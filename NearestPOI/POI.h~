@@ -1,0 +1,94 @@
+#include <iostream>
+#include <vector>
+#include <cmath>
+#include <libxml/parser.h>
+#include <libxml/tree.h>
+using namespace std;
+#include <string.h>
+class Point
+{
+public:
+	Point(float x1, float y1)
+	{
+		x = x1;
+		y = y1;
+	}
+	Point()
+	{
+		x = y = 0;
+	}	
+	float x,y;
+	Point operator+(Point p)
+	{
+		return Point(p.x+x,p.y+y);
+	}
+	Point operator-(Point p)
+	{
+		return Point(x-p.x,y-p.y);
+	}
+};
+
+class Polygon
+{
+private:
+	vector<Point> pointList;
+	string id,name;
+public:
+	Polygon()
+	{
+		name = "";
+		id = "";
+		pointList.clear();
+	}
+	void addPoint(Point p)
+	{
+		pointList.push_back(p);
+	}
+	int nextIndex(int i)
+	{
+		return (i+1)%pointList.size();
+	}
+	float getDis(Point p);
+	bool inside(Point p);
+};
+inline bool equalZero(float x)
+{
+	return (fabs(x)<1e-5);
+	
+}
+inline bool equalZero(Point p)
+{
+	return equalZero(p.x) && equalZero(p.y);
+}
+inline float disPoint(Point p1,Point p2)
+{
+	return sqrt((p1.x-p2.x)*(p1.x-p2.x)+(p1.y-p2.y)*(p1.y-p2.y));
+}
+float disLinePoint(Point p1,Point p2,Point p);
+inline float dot3(Point p1,Point p2,Point p)
+{
+	return (p1.x-p.x)*(p1.x-p.x)+(p2.y-p.y)*(p2.y-p.y);
+}
+inline float cross(Point p1,Point p2,Point p)
+{
+	return (p1.x-p.x)*(p2.y-p.y)-(p1.y-p.y)*(p2.x-p.x)
+}
+class XMLAdapter
+{
+private:
+	int scale;
+	string xmlPath,buildingName,floorName;
+	int minx,miny,maxx,maxy;
+	int xsize,ysize;
+public:
+	XMLAdapter(string s)
+	{
+		scale = 1;
+		xmlPath = s;
+		minx = miny = int(1e8);
+		maxx = maxy = int(-1e8);
+		xsize = ysize = 0;
+	}
+	void adaptXML(string buildingName,string floorName);
+};
+

@@ -1,0 +1,8 @@
+#include "POI.h"
+int main()
+{
+	XMLAdapter xmlAdapter = XMLAdapter("~\\Shiotoli\\map_xml\\");
+	xmlAdapter.adaptXML("BeiJingYiDiGang","FloorF1");
+	return 0;
+}
+
