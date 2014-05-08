@@ -174,8 +174,6 @@ public class BuildingActivity extends Activity {
 			}
 		});
 		nexdEngine = NexdEngine.getEngine();
-<<<<<<< HEAD
-<<<<<<< HEAD
 //		nexdEngine.setEngine(this, buildingIntentName, currentFloor, new NexdCallBackListener() {
 //			public void call(Object object) {
 //				if (object instanceof android.graphics.Point) {
@@ -215,10 +213,6 @@ public class BuildingActivity extends Activity {
 //				}
 //			}
 //		});
-=======
->>>>>>> efcf4c9c4e4bbd3f4c435d0b722041afc24c1023
-=======
->>>>>>> efcf4c9c4e4bbd3f4c435d0b722041afc24c1023
 		locatorButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
