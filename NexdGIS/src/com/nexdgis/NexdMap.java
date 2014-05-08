@@ -20,6 +20,7 @@ import com.nexdgis.layer.Layer;
 import com.nexdgis.layer.MapFeatureLayer;
 import com.nexdgis.layer.TopLayer;
 import com.nexdgis.layer.widget.OnFeatureSelectedListener;
+import com.nexdgis.layer.widget.OnUserClickListener;
 import com.nexdgis.log.NexdLog;
 
 public class NexdMap extends FrameLayout {
@@ -28,8 +29,9 @@ public class NexdMap extends FrameLayout {
 	private TopLayer mTopLayer;
 	private final ArrayList<GraphicLayer> mGraphicLayerList = new ArrayList<GraphicLayer>();
 	private OnFeatureSelectedListener mFeatureSelectedListener;
+	private OnUserClickListener mUserClickListener;
 	private final NexdMapHandler mHandler = new NexdMapHandler(this);
-
+	private boolean listened = false;
 
 	static {
 		System.loadLibrary("Map");
@@ -94,6 +96,8 @@ public class NexdMap extends FrameLayout {
 //					updateLocator();
 					updateCallout();
 					updateSelectedFeature();
+					Point clickedMapPoint = mMapFeatureLayer.getClickedMapPoint();
+					updateUserClick(clickedMapPoint.x,clickedMapPoint.y);
 				}
 
 				@Override
@@ -161,6 +165,7 @@ public class NexdMap extends FrameLayout {
 			}
 		}
 	}
+	
 
 	public void addGraphicLayer(GraphicLayer graphicLayer) {
 		mGraphicLayerList.add(graphicLayer);
@@ -201,12 +206,23 @@ public class NexdMap extends FrameLayout {
 
 	public void setOnFeatureSelectedListener(OnFeatureSelectedListener listener) {
 		mFeatureSelectedListener = listener;
+		listened = true;
 		if (listener!=null)
 		{
 			mMapFeatureLayer.enableListeningSelected();
 		}
 	}
-
+	public void setOnUserClickListener(OnUserClickListener listener) {
+		mUserClickListener = listener;
+		
+	}
+	public void updateUserClick(float x,float y)
+	{
+		if (mUserClickListener!=null)
+		{
+			mUserClickListener.onClick(x, y);
+		}
+	}
 	public void removeOnFeatureSelectedListener() {
 		mFeatureSelectedListener = null;
 	}

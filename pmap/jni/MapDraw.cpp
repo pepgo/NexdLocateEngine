@@ -18,7 +18,7 @@ void Map::initialPaint()
 	{
 		start = true;
 		LOGI("start");
-		//Éú³ÉÁ½¸ö»º´æÇø¶ÔÏó
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		vlen = ilen = llen = 0;
 		glGenBuffers (3, vbo);
 	//	for (int j = 0;j<100;j++)
@@ -82,20 +82,20 @@ void Map::initialPaint()
 //	glActiveTexture(GL_TEXTURE1);
     glEnable(GL_TEXTURE_2D);
     glBindBuffer(GL_ARRAY_BUFFER, vbo[2]);
-    //Îª¸ÃIDÖ¸¶¨Ò»¿éÖ¸¶¨´óÐ¡µÄ´æ´¢ÇøÓò£¨ÇøÓòµÄÎ»ÖÃ´óµÖÓÉÄ©²ÎÊýÓ°Ïì),  ´«ÊäÊý¾Ý
+    //ï¿½ï¿½ï¿½ï¿½IDï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½),  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     glBufferData(GL_ARRAY_BUFFER, sizeof(float)*2*ttlen, textureIndexes, GL_STATIC_DRAW);
 	glTexCoordPointer(2, GL_FLOAT, 0, 0);
 //	glBindTexture(GL_TEXTURE_2D,textPolyList[0].textures);
     glDisable(GL_TEXTURE_2D);
-    // ½ûÓÃÉî¶È²âÊÔ
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     glDisable(GL_DEPTH_TEST);
 
-    // ÆôÓÃ»ìºÏ
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	glBindBuffer    (GL_ARRAY_BUFFER, vbo[0]);
 	glBufferData (GL_ARRAY_BUFFER, 4*2*vlen, positions, GL_STATIC_DRAW);
 	glVertexPointer (2, GL_FLOAT, 0, 0);
 
-	//¶¨Òå¶¥µã×ø±ê
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	glBindBuffer    (GL_ELEMENT_ARRAY_BUFFER, vbo[1]);
 //	glColor4f(backColor.r,backColor.g,backColor.b,backColor.a);
 	glBufferData (GL_ELEMENT_ARRAY_BUFFER, 2*ilen, indexes, GL_STATIC_DRAW);
@@ -121,20 +121,20 @@ void Map::restart()
 
     glEnable(GL_TEXTURE_2D);
     glBindBuffer(GL_ARRAY_BUFFER, vbo[2]);
-    //Îª¸ÃIDÖ¸¶¨Ò»¿éÖ¸¶¨´óÐ¡µÄ´æ´¢ÇøÓò£¨ÇøÓòµÄÎ»ÖÃ´óµÖÓÉÄ©²ÎÊýÓ°Ïì),  ´«ÊäÊý¾Ý
+    //ï¿½ï¿½ï¿½ï¿½IDï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½),  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     glBufferData(GL_ARRAY_BUFFER, sizeof(float)*2*ttlen, textureIndexes, GL_STATIC_DRAW);
 	glTexCoordPointer(2, GL_FLOAT, 0, 0);
 //	glBindTexture(GL_TEXTURE_2D,textPolyList[0].textures);
     glDisable(GL_TEXTURE_2D);
-    // ½ûÓÃÉî¶È²âÊÔ
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     glDisable(GL_DEPTH_TEST);
 
-    // ÆôÓÃ»ìºÏ
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	glBindBuffer    (GL_ARRAY_BUFFER, vbo[0]);
 	glBufferData (GL_ARRAY_BUFFER, 4*2*vlen, positions, GL_STATIC_DRAW);
 	glVertexPointer (2, GL_FLOAT, 0, 0);
 
-	//¶¨Òå¶¥µã×ø±ê
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	glBindBuffer    (GL_ELEMENT_ARRAY_BUFFER, vbo[1]);
 //	glColor4f(backColor.r,backColor.g,backColor.b,backColor.a);
 	glBufferData (GL_ELEMENT_ARRAY_BUFFER, 2*ilen, indexes, GL_STATIC_DRAW);
@@ -158,25 +158,25 @@ void Map::render()
 	glEnableClientState (GL_VERTEX_ARRAY);
 	glBindBuffer    (GL_ARRAY_BUFFER, vbo[0]);
 	glVertexPointer (2, GL_FLOAT, 0, 0);
-	//ÇåÆÁ
+	//ï¿½ï¿½ï¿½ï¿½
 	glDisable(GL_TEXTURE_2D);
 	for (int i = polyList.size()-1;i>=0;i--)
 	{
 //		glBufferData (GL_ARRAY_BUFFER, 4*2*10, positions, GL_STATIC_DRAW);
 //		glVertexPointer (2, GL_FLOAT, 0, 0);
-		//¶¨Òå¶¥µã×ø±ê
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	//	glColor4f(backColor.r,backColor.g,backColor.b,backColor.a);
 //		glBufferData (GL_ELEMENT_ARRAY_BUFFER, 2*24, indexes, GL_STATIC_DRAW);
-		//°´ÕÕ²ÎÊý¸ø¶¨µÄÖµ»æÖÆÍ¼ÐÎ
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //		glDrawElements  (GL_TRIANGLES,24, GL_UNSIGNED_SHORT, 0);
 
-		//ÉèÖÃ¶¥µãºÍÎÆÀíµÄÎ»ÖÃ¡¢ÀàÐÍ
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //		LOGI("%d",i);
 		polyList[i].Draw();
 	}
 	glEnable(GL_TEXTURE_2D);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-	//»æÍ¼
+	//ï¿½ï¿½ï¿½ï¿½
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	for (int i = 0;i<textPolyList.size();i++)
@@ -188,12 +188,12 @@ void Map::render()
 	}
 //	glBufferData (GL_ARRAY_BUFFER, 4*2*vlen, positions, GL_STATIC_DRAW);
 //	glVertexPointer (2, GL_FLOAT, 0, 0);
-	//¶¨Òå¶¥µã×ø±ê
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //	glColor4f(backColor.r,backColor.g,backColor.b,backColor.a);
 //	glBufferData (GL_ELEMENT_ARRAY_BUFFER, 2*ilen, indexes, GL_STATIC_DRAW);
-	//°´ÕÕ²ÎÊý¸ø¶¨µÄÖµ»æÖÆÍ¼ÐÎ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //	glDrawElements  (GL_TRIANGLES,ilen, GL_UNSIGNED_SHORT, 0);
-	//¹Ø±Õ¶¥µãÉèÖÃ¹¦ÄÜ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 	glDisableClientState(GL_VERTEX_ARRAY);
 	glDisable(GL_BLEND);
@@ -205,19 +205,19 @@ void Map::renderwithoutText()
 //	LOGI("render");
 
 	glEnableClientState (GL_VERTEX_ARRAY);
-	//ÇåÆÁ
+	//ï¿½ï¿½ï¿½ï¿½
 	glDisable(GL_TEXTURE_2D);
 	for (int i = polyList.size()-1;i>=0;i--)
 	{
 //		glBufferData (GL_ARRAY_BUFFER, 4*2*10, positions, GL_STATIC_DRAW);
 //		glVertexPointer (2, GL_FLOAT, 0, 0);
-		//¶¨Òå¶¥µã×ø±ê
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	//	glColor4f(backColor.r,backColor.g,backColor.b,backColor.a);
 //		glBufferData (GL_ELEMENT_ARRAY_BUFFER, 2*24, indexes, GL_STATIC_DRAW);
-		//°´ÕÕ²ÎÊý¸ø¶¨µÄÖµ»æÖÆÍ¼ÐÎ
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //		glDrawElements  (GL_TRIANGLES,24, GL_UNSIGNED_SHORT, 0);
 
-		//ÉèÖÃ¶¥µãºÍÎÆÀíµÄÎ»ÖÃ¡¢ÀàÐÍ
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //		LOGI("%d",i);
 		polyList[i].Draw();
 	}
@@ -225,7 +225,7 @@ void Map::renderwithoutText()
 
 int Map::findSelectedPolygon(Point p)
 {
-	for (int i = 0;i<polyList.size();i++)
+	for (int i = 0;i<polyList.size()ï¼1;i++)
 	if (polyList[i].getFillable())
 	{
 		if (polyList[i].insidePoly(p))
