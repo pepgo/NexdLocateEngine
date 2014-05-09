@@ -19,7 +19,7 @@ public class MapFeatureLayer extends Layer {
 	private IGestureObserver gestureObserver;
 	private MapFeature clickedMapFeature;
 	private Point clickedScreenPoint = new Point();
-//	private Point clickedMapPoint;
+	private Point clickedMapPoint = new Point();
 	private Point locatorPoint = new Point();
 	private boolean isListeningSelected = false;
 
@@ -62,9 +62,10 @@ public class MapFeatureLayer extends Layer {
 	public void doClick(float x, float y) {
 		if (isListeningSelected)
 			clickedMapFeature = glSurfaceView.doClick(x, y);
+		
 		clickedScreenPoint.set(x, y);
 		// native method 
-//		clickedMapPoint = glSurfaceView.screenPoint2MapPoint(clickedScreenPoint);
+		clickedMapPoint = glSurfaceView.screenPoint2MapPoint(clickedScreenPoint);
 		if (gestureObserver != null) {
 			gestureObserver.clickToUpdate(this);
 		}
@@ -108,6 +109,10 @@ public class MapFeatureLayer extends Layer {
 	public Point getClickedScreenPoint() {
 		// return glSurfaceView.mapPoint2ScreenPoint(clickedMapPoint);
 		return clickedScreenPoint;
+	}
+	public Point getClickedMapPoint() {
+		//return glSurfaceView.mapPoint2ScreenPoint(clickedMapPoint);
+		return clickedMapPoint;
 	}
 	public void setLocator(float x, float y) {
 		locatorPoint = new Point(x,y);

@@ -14,6 +14,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
@@ -28,6 +30,7 @@ import com.nexdgis.feature.MapFeatureTable;
 import com.nexdgis.layer.TopLayer;
 import com.nexdgis.layer.opengl.NexdGLRenderer;
 import com.nexdgis.layer.widget.OnFeatureSelectedListener;
+import com.nexdgis.layer.widget.OnUserClickListener;
 import com.nexdgis.log.NexdLog;
 import com.nexdgis.remote.NexdCallBackListener;
 import com.nexdgis.remote.*;
@@ -127,6 +130,16 @@ public class BuildingActivity extends Activity {
 			}
 
 		});
+		nexdMap.setOnUserClickListener(new OnUserClickListener(){
+
+			@Override
+			public void onClick(float x, float y) {
+				// TODO Auto-generated method stub
+				NexdLog.tagInfo("clickMapPos",+x+"    "+y);
+				
+			}
+			
+		});
 
 
 		listView = (ListView) findViewById(R.id.floorlistview);
@@ -161,6 +174,45 @@ public class BuildingActivity extends Activity {
 			}
 		});
 		nexdEngine = NexdEngine.getEngine();
+//		nexdEngine.setEngine(this, buildingIntentName, currentFloor, new NexdCallBackListener() {
+//			public void call(Object object) {
+//				if (object instanceof android.graphics.Point) {
+//					int x = ((android.graphics.Point)object).x;
+//					int y = ((android.graphics.Point)object).y;
+//					//		                                setLocatorTo(x, y);
+//					nexdMap.setLocator(x, y);
+//					return;
+//				}
+//				if (object instanceof String) {
+//					new ToastUtil(getApplicationContext()).showToast("Detected floor:" + (String)object);
+//				}
+//				if (object instanceof Integer) {
+//					switch ((Integer)object) {
+//					case NexdEngine.LOCATING_FINISHED:
+//						BuildingActivity.this.locatorButton.setEnabled(true);
+//						break;
+//					case NexdEngine.LOCATING_ERROR:
+//						new ToastUtil(getApplicationContext()).showToast("Generating info data");
+//						break;
+//					case NexdEngine.LOCATING_FAILED:
+//						new ToastUtil(getApplicationContext()).showToast("Locating failed");
+//						break;
+//					case NexdEngine.LOCATING_EXCEPTION:
+//						new ToastUtil(getApplicationContext()).showToast("Result exception");
+//						break;
+//					case NexdEngine.NETWORK_TIMEOUT:
+//						new ToastUtil(getApplicationContext()).showToast("Timeout");
+//						break;
+//					case NexdEngine.SOCKET_EXCEPTION:
+//						new ToastUtil(getApplicationContext()).showToast("Socket error");
+//						break;
+//					default:
+//						break;
+//					}
+//					return;
+//				}
+//			}
+//		});
 		locatorButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
