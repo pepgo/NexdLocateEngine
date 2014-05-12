@@ -31,7 +31,7 @@ public class NexdMap extends FrameLayout {
 	private OnFeatureSelectedListener mFeatureSelectedListener;
 	private OnUserClickListener mUserClickListener;
 	private final NexdMapHandler mHandler = new NexdMapHandler(this);
-	private boolean listened = false;
+
 
 	static {
 		System.loadLibrary("Map");
@@ -206,7 +206,6 @@ public class NexdMap extends FrameLayout {
 
 	public void setOnFeatureSelectedListener(OnFeatureSelectedListener listener) {
 		mFeatureSelectedListener = listener;
-		listened = true;
 		if (listener!=null)
 		{
 			mMapFeatureLayer.enableListeningSelected();

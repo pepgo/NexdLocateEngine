@@ -3,11 +3,14 @@ package com.nexdgis;
 import java.io.File;
 import java.util.ArrayList;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -27,12 +30,12 @@ import com.gy.nexdgis.R;
 import com.nexdgis.database.NexdDatabase;
 import com.nexdgis.feature.Feature;
 import com.nexdgis.feature.MapFeatureTable;
+import com.nexdgis.geometry.Point;
 import com.nexdgis.layer.TopLayer;
 import com.nexdgis.layer.opengl.NexdGLRenderer;
 import com.nexdgis.layer.widget.OnFeatureSelectedListener;
 import com.nexdgis.layer.widget.OnUserClickListener;
 import com.nexdgis.log.NexdLog;
-import com.nexdgis.remote.NexdCallBackListener;
 import com.nexdgis.remote.*;
 
 public class BuildingActivity extends Activity {
@@ -45,6 +48,10 @@ public class BuildingActivity extends Activity {
 	String floorFilePath;
 	Button locatorButton;
 	NexdEngine nexdEngine;
+	SensorManager mSensorManager;
+	Sensor mSensorMagnet,mSensorAccel;
+	Point locatePos;
+	Point currentPos;
 
 	public void onCreate(Bundle savedInstanceStateBundle) {
 		super.onCreate(savedInstanceStateBundle);
@@ -67,10 +74,11 @@ public class BuildingActivity extends Activity {
 		floorFilePath = Environment.getExternalStorageDirectory().getPath() + "/map_xml/" + buildingIntentName + "/" + currentFloor;
 		locatorButton = (Button) findViewById(R.id.button1);
 		initViews();
-
+		initSensor();
 	}
 
 	Handler handler = new Handler();
+
 	Runnable runnable = new Runnable() {
 		public void run() {
 			System.out.println("change floor to:" + currentFloor);
@@ -78,22 +86,24 @@ public class BuildingActivity extends Activity {
 
 			test = NexdDatabase.getDbInstance();
 			initViews();
+			initSensorPos();
 		}
 	};
-
-	@SuppressLint("HandlerLeak")
+	NexdMap nexdMap;
+	Handler updateHandler;
 	void initViews() {
 		MapFeatureTable.releaseTable();
 		NexdGLRenderer.initialized = false;
-		final NexdMap nexdMap = (NexdMap)findViewById(R.id.nexd_map);
-		final Handler updateHandler = new Handler(){
+		nexdMap = (NexdMap)findViewById(R.id.nexd_map);
+		updateHandler = new Handler(){
 			@Override
 			public void handleMessage(Message msg)
 			{
 				super.handleMessage(msg);
 				if (msg.what == 1)
 				{
-					nexdMap.updateLocator();
+					if (currentPos!=null && currentPos.x>-998 && currentPos.y>-998)
+						nexdMap.updateLocator();
 				}
 
 			}
@@ -224,10 +234,9 @@ public class BuildingActivity extends Activity {
 							int y = ((android.graphics.Point)object).y;
 							//				                                setLocatorTo(x, y);
 							NexdLog.tagInfo("log", x+" "+y);
-							nexdMap.setLocator(x, y);
-							Message msg = new Message();
-							msg.what = 1;
-							updateHandler.sendMessage(msg);
+							locatePos.x = x;
+							locatePos.y = y;
+			//				nexdMap.setLocator(x, y);
 							//				                                nexdMap.updateLocator();
 							return;
 						}
@@ -262,8 +271,78 @@ public class BuildingActivity extends Activity {
 					}
 				});
 				locatorButton.setEnabled(false);
-				nexdEngine.startSerialLocate(8,2);
+				nexdEngine.startSerialLocate(2,1);
 			}
 		});
+	}
+	float lowpass = 0.0f;
+	private float low_pass (float input)  
+    {  
+    	if (Math.abs(input - lowpass) > 3) {
+			lowpass = input;
+		} else {
+			lowpass = input * 0.1f + lowpass * 0.9f;  
+		}
+        return lowpass;  
+    }  
+	
+	private void location_low_pass (float input_x, float input_y) {
+		currentPos.x = input_x * 0.1f + currentPos.x * 0.9f;
+		currentPos.y = input_y * 0.1f + currentPos.y * 0.9f;
+	}
+    
+	double rotationRate;
+	float[] accelerometerValues = new float[3];
+	float[] magneticFieldValues = new float[3];
+//	float north = 0.0;
+	private void calculate() {
+		float[] values = new float[3];
+		float[] R = new float[9];
+		SensorManager.getRotationMatrix(R, null, accelerometerValues, magneticFieldValues);
+		SensorManager.getOrientation(R, values);
+//		if the location is already recived from server
+		rotationRate = low_pass(values[0]);
+		location_low_pass(locatePos.x, locatePos.y);
+		nexdMap.setLocator(currentPos.x, currentPos.y);
+		nexdMap.updateLocator();
+//		Message msg = new Message();
+//		msg.what = 1;
+//		updateHandler.sendMessage(msg);
+//		rotateLocator(low_pass(values[0]) - north);// - 3.1415926 / 2.0));
+	}
+	private void initSensor()
+	{
+		final SensorEventListener magEventListener = new SensorEventListener() {
+			public void onSensorChanged(SensorEvent event) {
+				// TODO Auto-generated method stub
+				if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD)  
+					magneticFieldValues = event.values;  
+				if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER)  
+					accelerometerValues = event.values;
+				if (locatePos.x > -998.0 && locatePos.y > -998.0) {
+					calculate();
+				}
+			}
+				
+			public void onAccuracyChanged(Sensor sensor, int accuracy) {
+				// TODO Auto-generated method stub
+			}
+		};
+		locatePos = new Point (-999,-999);
+		currentPos = new Point(-999,-999);
+		mSensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
+			if (mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD) != null) {
+				mSensorMagnet = mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+				mSensorAccel = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+				mSensorManager.registerListener(magEventListener, mSensorMagnet, 70000);
+				mSensorManager.registerListener(magEventListener, mSensorAccel, 70000);
+			} else {
+			}
+	}
+	private void initSensorPos()
+	{
+		locatePos = new Point (-999,-999);
+		currentPos = new Point(-999,-999);
+		
 	}
 }
