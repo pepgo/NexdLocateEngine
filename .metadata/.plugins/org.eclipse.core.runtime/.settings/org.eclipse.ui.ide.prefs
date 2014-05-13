@@ -1,9 +1,8 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=master
 PROBLEMS_FILTERS_MIGRATE=true
 eclipse.preferences.version=1
-<<<<<<< HEAD
-platformState=1399362037579
-=======
-platformState=1399264133224
->>>>>>> master
+platformState=1399897537322
 quickStart=false
 tipsAndTricks=true
